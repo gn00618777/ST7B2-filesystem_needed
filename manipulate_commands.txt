@@ -1,0 +1,102 @@
+step1.   RJ45 connect to ST7B2's WAN port from hub 
+step2.   RJ45 connect to ST7B2's one of LAN port from your computer
+step3.   Power on ST7B2  
+
+
+Waiting a minute after booting,  then your computer can surf internet. Please open your browser and type this URL: http://192.168.30.1:1300/Switch_layout2.html, then you will get into ST7B2's webpage.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+If you want to test periphial functions, these are some test scripts you can try after system login, of course, you can test some functions using webpage.
+All of test scripts in  /home/ubuntu/ST7B2_function_test/ 
+
+
+cd ST7B2_function_test/
+
+led test
+===============================================================
+./led_test.sh (args: wifi or 3g or app). For example:  ./led_test.sh wifi 
+
+Wifi is blue led
+App is green one
+What are needed to let 3g led turn on, you need install 3G module, insert SIM card, installt receiver on 3G module before powr on ST7B2.   
+
+
+can bus test
+===============================================================
+./canbus_test.sh (Bring can interface up)
+./canbus_test.sh down (Bring can interface down)
+then you type "ifconfig", will see can0 interface is bring up.  
+
+
+extend gpios test
+===============================================================
+./extend_gpio_test.sh  or using webpage 
+
+Get into webpage, and select "GPIO controlls" item in the left of webpage 
+
+
+serial port test
+================================================================
+step1. You have to install Putty first, and select "connection type" to "Serial", then select your "Serial line" to COM* , finally set "speed" you want. 
+step2. Get into webpage, and select "Serial communication" item in the left of webpage
+step3. Select serial type and speed. Be aware, your speed need the same one with putty set.
+
+If you want to end up "Receiver", you should input "^" from putty,  there are message of "Stop receive!" apperanced.  
+
+
+usb test
+================================================================
+please insert usb thumb fisrt, then type "lsblk"
+
+you will see something like this:
+
+               NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+               mtdblock0    31:0    0   128K  0 disk
+               mtdblock1    31:1    0   128K  0 disk 
+               mtdblock2    31:2    0   128K  0 disk
+               mtdblock3    31:3    0   128K  0 disk
+               mtdblock4    31:4    0   1.9M  0 disk
+               mtdblock5    31:5    0   128K  0 disk
+               mtdblock6    31:6    0     5M  0 disk
+               mtdblock7    31:7    0 248.5M  0 disk
+               mmcblk0     179:0    0   3.7G  0 disk
+                   |-mmcblk0p1 179:1    0  70.6M  0 part /boot/uboot
+                  `-mmcblk0p2 179:2    0   3.6G  0 part /
+               sda           8:0    1   7.5G  0 disk
+               sdb           8:16   1   7.5G  0 disk
+                  |-sdb1        8:17   1  70.6M  0 part
+                  `-sdb2        8:18   1   7.4G  0 part       
+           
+  
+
+mount usb:
+                 mount /dev/sda /mnt
+                 ls /mnt
+
+                 or
+
+                 mount /dev/sdb1 /mnt
+                 ls /mnt
+
+                 You can access files in usb thumb. 
+
+umount usb:
+                   umount /mnt
+
+
+RTC function
+==================================================================
+./rtc_test.sh    (checking system clock)
+./rtc_test.sh s xx xx xx xx xxxx (setting system clock) 
+
+
+
+WIFI function
+==================================================================
+./wifi_test.sh c "SSID" (Checking SSID you want to search is exist & you will see something like this )
+./wifi_test.sh s "SSID" "password"    (eg.   ./wifi_test s Xperia_TX_8079 12345678     if success, you can surf internet)
+
+
+
+
