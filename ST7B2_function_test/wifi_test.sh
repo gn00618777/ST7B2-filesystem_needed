@@ -3,6 +3,13 @@
 COLOR_REST='\e[0m'
 COLOR_YELLOW='\e[0;33m';
 
+if [ "$1" == "" ]; then
+
+   iwlist wlan0 scan
+   exit 0
+
+fi
+
 if [ "$1" == "c" ]; then
 
    if [ "$2" == "" ]; then
@@ -52,6 +59,7 @@ fi
 
 if [ "$1" != "s" ]; then
 
+   echo -e "${COLOR_YELLOW}Usage: ./wifi_test.sh -->Searching & Listing all available AP${COLOR_REST}"
    echo -e "${COLOR_YELLOW}Usage: ./wifi_test.sh s \"SSID\" \"password\" -->Setting SSID&password to get IP${COLOR_REST}"
    echo -e "${COLOR_YELLOW}       ./wifi_test.sh c \"SSID\" -->To check this SSID existed${COLOR_REST}"
    exit 1
