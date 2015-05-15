@@ -14,7 +14,7 @@ if [ "$1" == "" ]; then
       canconfig can0 bitrate 50000 ctrlmode triple-sampling on
       canconfig can0 start
 
-      str1=`ifconfig | grep "cano"`
+      str1=`ifconfig | grep "can0"`
    
       if [ "$str1" != "" ]; then     
 
