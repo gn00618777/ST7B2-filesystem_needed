@@ -12,28 +12,23 @@ str=`dmesg | grep "0x4dd072"`
 str1=`dmesg | grep "id is : 0x0"`
 
 if [ "$str" == "" ]; then
-   
+
    echo "WAN port is failed"
 
 else
-  
+
    echo "WAN port is OK!"
 
-fi 
+fi
 
-if [ "$str1" == "" ]; then 
+if [ "$str1" == "" ]; then
 
    echo "LAN port is failed"
 
 else
- 
+
    echo "LAN port is OK!"
 
-fi   
+fi
 
 
-
-      
-
-   
- 

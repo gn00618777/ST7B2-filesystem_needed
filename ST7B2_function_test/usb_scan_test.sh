@@ -7,8 +7,8 @@ do
         usbx=`lsblk | grep "sda"`
         usby=`lsblk | grep "sdb"`
 
-        if [ "$usbx" != "" ] && [ "$usby" != "" ]; then 
-             
+        if [ "$usbx" != "" ] && [ "$usby" != "" ]; then
+
              # mount usbx
              mount /dev/sda1 /media
 
@@ -20,21 +20,21 @@ do
 
              printresultx=`cat /media/sda_text`
              printresulty=`cat /mnt/sdb_text`
-	     
+
              if [ "$printresultx" == "Bernie" ]; then
-		  echo "sda read data is correct!"	   
-             fi
+		  echo "sda read data is correct!"	
+      fi
              if [ "$printresulty" == "Bernie" ]; then
                   echo "sdb read data is correct!"
 	     fi
 
              #umount usbx
-             umount /media 
+             umount /media
 
 	     #umount usby
-             umount /mnt 
+             umount /mnt
 
-	 fi
+         fi
 
          if [ "$usbx" != "" ] && [ "$usby" == "" ]; then
 
@@ -42,17 +42,17 @@ do
 	    #mount usbx
             mount /dev/sda1 /meida
 
-            echo "Bernie" > /media/sda_text 
-            
+            echo "Bernie" > /media/sda_text
+
             printresultx=`cat /media/sda_text`
 
             if [ "$printresultx" == "Bernie" ]; then
 		echo "sda read data is correct!"
-            fi
+    fi
 
             #umount usbx
-            umount /media 
-	      
+            umount /media
+	
          fi
 
          if [ "$usbx" == "" ] && [ "$usby" != "" ]; then

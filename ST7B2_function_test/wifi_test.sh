@@ -13,12 +13,12 @@ fi
 if [ "$1" == "c" ]; then
 
    if [ "$2" == "" ]; then
-      
+
       echo -e "${COLOR_YELLOW}Usage: ./wifi_test.sh c \"SSID\" -->To check this SSID existed${COLOR_REST}"      
       exit 0
 
    fi
- 
+
    str=`iwlist wlan0 scan | grep "\b$2\b"`
    if [ "$str" != "" ]; then
 
@@ -30,7 +30,7 @@ if [ "$1" == "c" ]; then
 
    fi
 
-   exit 0  
+   exit 0
 
 fi
 
@@ -40,7 +40,7 @@ if [ "$1" == "s" ]; then
    if [ "$2" == "" ] || [ "$3" == "" ]; then
 
       echo -e "${COLOR_YELLOW}Usage: ./wifi_test.sh s \"SSID\" \"password\" -->Setting SSID&password to get IP${COLOR_REST}"
-  
+
       exit 1
 
    fi
@@ -52,7 +52,7 @@ if [ "$1" == "s" ]; then
    wpa_supplicant -BDnl80211 -iwlan0 -c/etc/wpa_supplicant/WIFI.conf
    dhclient wlan0
 
-   ifconfig wlan0 
+   ifconfig wlan0
    echo -e "${COLOR_YELLOW}Now you can check wlan0 interface whether getting IP address or not${COLOR_REST}"
 
 fi

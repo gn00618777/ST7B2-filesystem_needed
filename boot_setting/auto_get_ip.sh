@@ -1,7 +1,7 @@
 #!/bin/bash
 
 getip() {
-      
+
     dhclient eth1 &> /dev/null
 
 }
@@ -23,13 +23,13 @@ do
            exit 0
 
        fi
-  
+
       count=`ps aux | grep -c "dhclient"`
 
       if [ "$count" -gt "5" ]; then
 
            killall dhclient &> /dev/null
 
-      fi  
+      fi
 
-done 
+done

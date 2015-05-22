@@ -29,5 +29,4 @@ ifconfig eth1 up
 eth1_nat.sh
 cd /flask_web_demaon
 python hello-template.py &
-cd /flask_web_demaon/SocketIO_Server/
-python server.py &
+
